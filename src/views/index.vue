@@ -1,37 +1,97 @@
 <template>
-    <div>
-        <div class="phone-viewport">
-            <md-bottom-bar md-sync-route>
-                <md-bottom-bar-item to="/components/bottom-bar/home" md-label="Home" md-icon="home"></md-bottom-bar-item>
-                <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Posts" md-icon="/assets/icon-whatshot.svg"></md-bottom-bar-item>
-                <md-bottom-bar-item to="/components/bottom-bar/favorites" md-label="Favorites" md-icon="favorite"></md-bottom-bar-item>
-            </md-bottom-bar>
-        </div>
+    <div class="page-container">
+        <md-content class="page1">
+            <div class="md-layout md-gutter page1-1">
+                <div class="md-layout-item md-size-30"> <img src="../imgs/logo.png" /></div>
+                <div class="md-layout-item"></div>
+                <div class="md-layout-item md-size-10">
+                    <md-menu md-size="small" md-align-trigger>
+                        <md-button md-menu-trigger>
+                            <img :src="lanImg" />
+                        </md-button>
 
-        <div class="phone-viewport">
-            <md-bottom-bar class="md-accent" md-sync-route>
-                <md-bottom-bar-item to="/components/bottom-bar/home" md-label="Home" md-icon="home"></md-bottom-bar-item>
-                <md-bottom-bar-item to="/components/bottom-bar/posts" md-label="Posts" md-icon="/assets/icon-whatshot.svg"></md-bottom-bar-item>
-                <md-bottom-bar-item to="/components/bottom-bar/favorites" md-label="Favorites" md-icon="favorite"></md-bottom-bar-item>
-            </md-bottom-bar>
-        </div>
+                        <md-menu-content class="panel">
+                            <md-list>
+                                <md-list-item class="md-primary" @click="handleStart(img)" v-for="img in lanImgs" :key="img">
+                                    <img :src="img" />
+                                </md-list-item>
+                            </md-list>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+            </div>
+            <div class="notice">
+                <div><img src="../imgs/exchangechain.png" /></div>
+                <div><img src="../imgs/wz.png" style="width:100%" /></div>
+                <div><img src="../imgs/100.png" style="width:60%" /></div>
+                <div>
+                    <p>联系方式:exchain@exchangechain.com</p>
+                </div>
+            </div>
+        </md-content>
+        <md-content class="page2">Primary</md-content>
+        <md-content class="page3">Primary</md-content>
+        <md-content class="page4">Primary</md-content>
+        <md-content class="page5">Primary</md-content>
     </div>
 </template>
-<style>
-.phone-viewport {
-  width: 322px;
-  height: 200px;
-  display: inline-flex;
-  align-items: flex-end;
-  overflow: hidden;
-  border: 1px solid lightgray;
-  background: lightgray;
+<style scoped>
+.page-container > div {
+  width: 100%;
+  /* display: inline-flex;
+  justify-content: center;
+  align-items: center; */
+  margin: 0 auto;
+  padding: 0 15%;
+}
+.page1 {
+  height: 75vmin;
+  background: url(../imgs/w-top.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  align-content: center;
+}
+/* .page1-1 {
+  padding: 20px 100px;
+} */
+.md-list {
+  padding: 0;
+  background-color: darkslateblue;
+}
+.notice {
+  padding: 5% 15%;
+}
+.notice > div {
+  padding-bottom: 5vh;
+}
+.notice > div:nth-child(3) {
+  text-align: center;
+  padding: 0 5vh;
+  padding-bottom: 5vh;
+}
+.notice p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+  color: white;
+  text-align: center;
 }
 </style>
 <script>
+import cn from '../imgs/l-cn.png'
+import en from '../imgs/l-en.png'
+import jp from '../imgs/l-jp.png'
+import ko from '../imgs/l-ko.png'
 export default {
+  data() {
+    return {
+      lanImg: cn,
+      lanImgs: [en, cn, jp, ko]
+    }
+  },
   methods: {
-    handleStart() {}
+    handleStart(img) {
+      console.log(img)
+    }
   }
 }
 </script>
