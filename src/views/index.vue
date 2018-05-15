@@ -2,6 +2,7 @@
     <div class="page-container">
         <page1></page1>
         <page2></page2>
+        <page3></page3>
         <md-content class="page2">Primary</md-content>
         <md-content class="page3">Primary</md-content>
         <md-content class="page4">Primary</md-content>
@@ -17,17 +18,16 @@
   /* margin: auto;
   padding: 3vh 15vw; */
 }
-
-
 </style>
 <script>
 import page1 from './page1'
 import page2 from './page2'
+import page3 from './page3'
 export default {
   data() {
     return {}
   },
-  components: { page1, page2 },
+  components: { page1, page2, page3 },
   methods: {}
 }
 </script>

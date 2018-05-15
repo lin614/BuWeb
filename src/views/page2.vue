@@ -1,6 +1,6 @@
 <template>
   <md-content id="page2">
-    <div class="md-layout md-gutter">
+    <div class="md-layout md-gutter md-alignment-space-between">
       <div class="md-layout-item intro">
         <div>
           <h1>EXCHANGE CHAIN</h1>
@@ -16,7 +16,8 @@
           </section>
         </div>
       </div>
-      <div class="md-layout-item"><img src="../imgs/pc.png" class="fullImg" /></div>
+       <div class="md-layout-item"></div>
+      <div class="md-layout-item md-alignment-right"><img src="../imgs/pc.png" class="fullImg" /></div>
     </div>
   </md-content>
 </template>
@@ -33,17 +34,17 @@ export default {
 
 <style>
 #page2 {
-  padding: 5vh 18vw;
+  padding: 7vh 15vw;
   /* height: 50vh; */
 }
 .intro h1 {
   color: blueviolet;
-  margin: 1em 0;
-  font-size: 3em;
+  margin: 0.5em 0;
+  font-size: 2em;
 }
 .intro hr {
   width: 3em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   height: 0.5em;
   color: blueviolet;
   background-color: blueviolet;
@@ -51,11 +52,11 @@ export default {
 }
 .intro section {
   padding-right: 3em;
-  font-size: 1.3em;
-  line-height: 1.4em;
+  font-size: 1.2em;
+  line-height: 1.2em;
 }
 .fullImg {
-  width: 85%;
-  height: 85%;
+  width: 300px;
+  height: 300px;
 }
 </style>

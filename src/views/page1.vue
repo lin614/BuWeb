@@ -65,7 +65,7 @@ export default {
 } */
 .md-list {
   padding: 0;
-  background-color: darkslateblue;
+  background-color: blueviolet;
 }
 .notice {
   padding: 5% 15%;
