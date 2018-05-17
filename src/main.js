@@ -14,6 +14,7 @@ import 'material-design-icons/iconfont/material-icons.css'
 // @import 'vue2-animate/src/less/vue2-animate.less'
 import './css/iconfont/iconfont.css'
 
+
 Vue.use(VueMaterial)
 
 Vue.use(VueRouter);
@@ -60,6 +61,7 @@ const store = new Vuex.Store({
 
 new Vue({
     el: '#app',
+  
     router: router,
     store: store,
     render: h => h(App)

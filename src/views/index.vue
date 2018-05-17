@@ -21,11 +21,17 @@
       </div>
     </div>
     <div class="notice">
-      <div ><img src="../imgs/exchangechain.png" /></div>
+      <div >
+        <!-- <img src="../imgs/exchangechain.png" /> -->
+        <h1>ExchangeChain</h1>
+        </div>
       <!-- class="animated infinite bounce" -->
       <div transition="fadeLeft"> <img :src="imgs[lanImg].jys" style="width:100%" /></div>
       <div class="animated"><img :src="imgs[lanImg].ico" style="width:60%" /></div>
-      <div><img :src="imgs[lanImg].email" style="width:50%" /></div>
+      <div>
+        <!-- <img :src="imgs[lanImg].email" style="width:50%" /> -->
+       <p>{{hxs[lanImg].email}}</p>
+        </div>
     </div>
   </md-content>
   <md-content id="page2">
@@ -65,15 +71,27 @@
   </md-content>
     <md-content id="page5">
     <div class="lx" style="width:100%">
-     <!-- 联系方式 -->
+     <!-- <p> {{hxs[lanImg].email}}</p> -->
+     <br/>
     </div>
     <div class="md-layout md-gutter footBar">
-      <div class="md-layout-item"><div class="btnLx"><i class="test2 iconfont icon-weibo"></i></div></div>
-     <div class="md-layout-item"><div class="btnLx"><i class="test2 iconfont icon-youxiang" ></i></div></div>
-      <div class="md-layout-item"><div class="btnLx"><i class="test2 iconfont icon-Github" ></i></div></div>
-       <div class="md-layout-item"><div class="btnLx"><i class="test2 iconfont icon-facebook"></i></div></div>
-        <div class="md-layout-item"><div class="btnLx"><i class="test2 iconfont icon-twitter" ></i></div></div>
-         <div class="md-layout-item"><div class="btnLx"><i class="test2 iconfont icon-telegram" ></i></div></div>
+      <div class="md-layout-item">
+        <Poptip  trigger="hover">
+        <div class="btnLx"><i class="test2 iconfont icon-weixin"></i>
+     
+      </div>
+      <div slot="content">
+           <!-- <qrcode-vue value="https://weibo.com/u/6538336303" size="100" level="H" background="white" foreground="navy"></qrcode-vue> -->
+           <img src='../imgs/weixin.jpg' style="width:100px;height:100px"/>
+        </div>
+        </Poptip>
+      </div>
+       <div class="md-layout-item"> <a href="https://weibo.com/u/6538336303" target="_blank"><div class="btnLx"><i class="test2 iconfont icon-weibo" ></i></div></a></div>
+     <div class="md-layout-item"> <a href="mailto:info@exchain.com" target="_blank"><div class="btnLx"><i class="test2 iconfont icon-youxiang" ></i></div></a></div>
+      <div class="md-layout-item"> <a href="#"><div class="btnLx"><i class="test2 iconfont icon-Github" ></i></div></a></div>
+       <div class="md-layout-item"> <a href="#"><div class="btnLx"><i class="test2 iconfont icon-facebook"></i></div></a></div>
+        <div class="md-layout-item"> <a :href="hxs[lanImg].twitter" target="_blank"><div class="btnLx"><i class="test2 iconfont icon-twitter" ></i></div></a></div>
+         <div class="md-layout-item"> <a :href="hxs[lanImg].telegram" target="_blank"><div class="btnLx"><i class="test2 iconfont icon-telegram" ></i></div></a></div>
     </div>
     
   </md-content>
@@ -85,19 +103,24 @@
 <script>
 
 import imgs from '../imgs/img.js'
-
-
+// import qrcode from 'qrcode'
+import QrcodeVue from 'qrcode.vue'
 
 export default {
+    components:{QrcodeVue},
   data() {
     return {
       lanImg: 'cn',
       lanImgs: ['en', 'cn', 'jp', 'ko'],
       imgs: imgs,
+      qrurl:null,
       hxindex:1,
       showInfo:true,
       hxs:{
         cn:{
+          email:'联系方式：ico@exchain.com',
+          twitter:'https://twitter.com/echangechain',
+          telegram:'https://t.me/Exchangechain_cn',
           hx:'核心技术',
           hx1:{title:'区块链技术',info:'区块链技术，简称BT（Blockchain technology），称之为分布式账本技术，是互联网数据库技术，其特点是去中心化、公开透明，让每个人均可参与数据查询。'},
           hx2:{title:'免费ICO',info:'无需缴纳高昂的上币费用，专业团队对接，ico项目免费上线'},
@@ -108,6 +131,9 @@ export default {
           hx7:{title:'交易快速确认',info:'POS节点机制，交易链上确认最快仅需1秒'}
         },
         en:{
+          email:'Contact us:：ico@exchain.com',
+          twitter:'https://twitter.com/echangechain',
+          telegram:'https://t.me/exchangechain_en',
           hx1:{title:'Blockchain Technology',info:'B.T. as called as distributed ledger technology, use the Internet Database Technology, is a digitized, decentralized, public ledger, it allows market participants to keep track of all transactions without central recordkeeping.'},
           hx2:{title:'Free ICO',info:'Listing Free No Charge, professional team support, Free Launching ICO projects.'},
           hx3:{title:'Open',info:'xchanges support for all tokens, USD and other legal currencies. '},
@@ -117,6 +143,9 @@ export default {
           hx7:{title:'Fast transaction',info:'adoption of POS, faster confirmed transactions only 1 second'},
         },
          jp:{
+           email:'コンタクト：ico@exchain.com',
+           twitter:'https://twitter.com/ExchangechainJP',
+           telegram:'https://t.me/exchangechain_Jp',
           hx1:{title:'ブロックチェーンテクノロジーを駆使します',info:'ブロックチェーンテクノロジー（Blockchain technology）とは、分散型台帳技術、または、分散型ネットワークである。「非中央集権な仕組み」や「取引情報の公開」が特徴。利用者全員がすべてのデータ履歴を確認できます。'},
           hx2:{title:'無料のICO政策',info:'様々な高額手数料は一切なし、プロフェッショナルな運営チームがサポート。'},
           hx3:{title:'豊富な取扱',info:'各種揃えの仮想通貨を取扱、法定通貨との取引も対応。'},
@@ -126,6 +155,9 @@ export default {
           hx7:{title:'ハイスピードな取引確認',info:'「PoS」取引検証方式を採用、トレードチェーンでの取引確認は取引後最速１秒からできます。'},
         },
          ko:{
+           email:'관심 있는 가입자는 연락 주십시오：ico@exchain.com',
+           twitter:'https://twitter.com/ExchangechainC',
+           telegram:'https://t.me/exchangechain_ko',
           hx1:{title:'블록체인기술',info:'블록체인기술은 비티(블록체인 테크놀로지) 약칭으로 부릅니다. 공공 거래 장부라고도 부릅니다. 중앙 집중형 서비서를 투명하게 공개하고, 거래 기록을 보관하지 않고 거래에 참여 하는 모든 사용자에게 거래 내역을 보내 주며, 거래 때마다 모든 거래 참여자들이 정보를 공유하고 이를 대조해 데이터 위조나 변조를 할 수 없도록 돼 있다. '},
           hx2:{title:'ICO 무료',info:'비싼 비용을 납부할 필요가 없이 전문 팀을 도킹했다.'},
           hx3:{title:'개장성',info:'저희 거래소가 각종 가상화폐과 법정 화폐를 자유롭게 도킹할 수 있다.'},
@@ -140,12 +172,17 @@ export default {
   methods: {
     handleStart(img) {
       this.lanImg = img
-    }
+    },
+    
+  },
+  mounted(){
+   
   }
 }
 </script>
 
 <style>
+a:link { text-decoration: none!important; }
 .btnHx{
   transition: all 0.3s;  
   width:5vw;
@@ -187,12 +224,13 @@ export default {
 
 #page1 {
   padding-top: 3vh;
-  height: 75vmin;
+  height: 65vmin;
   background: url(../imgs/w-top.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   align-content: center;
   padding: 3vh 20%;
+  color:white;
 }
 
 .md-list {
@@ -210,6 +248,9 @@ export default {
   padding: 0 5vh;
   padding-bottom: 5vh;
 }
+.notice h1{
+  font-size:6vh;
+}
 .notice p {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: large;
@@ -223,7 +264,7 @@ export default {
 #page3 {
   padding: 3vh 20%;
   background-color: #557cff;
-  height: 75vh;
+  height: 80vh;
 }
 .hx{
   display: inline-flex;
@@ -292,14 +333,18 @@ export default {
     align-items: center;
 }
 #page5 {
-  padding: 3vh 20%;
+  padding: 3vh 15%;
   background-color: #333333;
-  /* height: 50vh; */
+  height: 25vh;
 }
+/* .lx p{
+  color:white;
+  font-size:3em;
+} */
 .btnLx{
   transition: all 0.3s;  
-  width:3em;
-  height:3em;
+  width:6vh;
+  height:6vh;
    background: url(../imgs/small2.png);
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -322,7 +367,7 @@ export default {
 }
 .btnLx>i{
   color:white;
-  font-size:2em
+  font-size:4vh
 }
 .btnLx:hover>i{
    color:#000;
@@ -347,5 +392,11 @@ export default {
 /* .slide-fade-leave-active for below version 2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
+}
+.ivu-poptip-body{
+  padding:5px!important;
+}
+.ivu-poptip-popper{
+  min-width:0!important;
 }
 </style>
