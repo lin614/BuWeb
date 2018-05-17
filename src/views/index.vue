@@ -85,6 +85,9 @@
 <script>
 
 import imgs from '../imgs/img.js'
+
+
+
 export default {
   data() {
     return {
