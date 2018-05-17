@@ -7,12 +7,12 @@
       <div class="md-layout-item md-size-30"> <img src="../imgs/logo.png" /></div>
       <div class="md-layout-item"></div>
       <div class="md-layout-item md-size-10">
-        <md-menu md-size="small" md-align-trigger>
+        <md-menu md-size="small" md-align-trigger  :md-active.sync="showMenu" @mouseover="showMenu=true" >
           <md-button md-menu-trigger>
             <img :src="imgs[lanImg].lan" />
           </md-button>
 
-          <md-menu-content>
+          <md-menu-content >
             <md-list-item class="panel" @click="handleStart(img)" v-for="img in lanImgs" :key="img" v-show="img!=lanImg">
               <img :src="imgs[img].lan" />
             </md-list-item>
@@ -104,18 +104,19 @@
 
 import imgs from '../imgs/img.js'
 // import qrcode from 'qrcode'
-import QrcodeVue from 'qrcode.vue'
+// import QrcodeVue from 'qrcode.vue'
 
 export default {
-    components:{QrcodeVue},
+    // components:{QrcodeVue},
   data() {
     return {
-      lanImg: 'cn',
+      lanImg: 'en',
       lanImgs: ['en', 'cn', 'jp', 'ko'],
       imgs: imgs,
       qrurl:null,
       hxindex:1,
       showInfo:true,
+      showMenu:false,
       hxs:{
         cn:{
           email:'联系方式：ico@exchain.com',
@@ -132,7 +133,7 @@ export default {
         },
         en:{
           email:'Contact us:：ico@exchain.com',
-          twitter:'https://twitter.com/echangechain',
+          twitter:'https://twitter.com/exchangechain',
           telegram:'https://t.me/exchangechain_en',
           hx1:{title:'Blockchain Technology',info:'B.T. as called as distributed ledger technology, use the Internet Database Technology, is a digitized, decentralized, public ledger, it allows market participants to keep track of all transactions without central recordkeeping.'},
           hx2:{title:'Free ICO',info:'Listing Free No Charge, professional team support, Free Launching ICO projects.'},
