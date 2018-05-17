@@ -11,7 +11,7 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 // import 'vue-material/dist/theme/default.css'
 import 'material-design-icons/iconfont/material-icons.css'
-import 'animate.css'
+// @import 'vue2-animate/src/less/vue2-animate.less'
 
 Vue.use(VueMaterial)
 

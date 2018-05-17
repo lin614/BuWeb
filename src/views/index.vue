@@ -33,24 +33,31 @@
   </md-content>
    <md-content id="page3">
     <div class="hx" style="width:100%">
-     <img :src="imgs[lanImg].hx" style=""/>
+    <!-- <div>
+       <h1>{{hxs[lanImg]['hx']}}</h1>
+    
+    </div>
+    <div> <hr></div> -->
+     <img :src="imgs[lanImg].hx" />
     </div>
     <div class="md-layout md-gutter">
-      <div class="md-layout-item"><div :class='{activeHx:hxindex==1}' class="btnHx" @mouseover='hxindex=1'><i class="test2 iconfont icon-qukuailian"></i></div></div>
-     <div class="md-layout-item"><div  :class='{activeHx:hxindex==2}' class="btnHx" @mouseover='hxindex=2'><i class="test2 iconfont icon-mianfeiICO" ></i></div></div>
-      <div class="md-layout-item"><div  :class='{activeHx:hxindex==3}' class="btnHx" @mouseover='hxindex=3'><i class="test2 iconfont icon-kaifangxing" ></i></div></div>
-       <div class="md-layout-item"><div  :class='{activeHx:hxindex==4}' class="btnHx" @mouseover='hxindex=4'><i class="test2 iconfont icon-toumingkexin"></i></div></div>
-        <div class="md-layout-item"><div  :class='{activeHx:hxindex==5}' class="btnHx" @mouseover='hxindex=5'><i class="test2 iconfont icon-diyongjin" ></i></div></div>
-         <div class="md-layout-item"><div  :class='{activeHx:hxindex==6}' class="btnHx" @mouseover='hxindex=6'><i class="test2 iconfont icon-gaoanquanxing" ></i></div></div>
-           <div class="md-layout-item"><div :class='{activeHx:hxindex==7}'  class="btnHx" @mouseover='hxindex=7'><i class="test2 iconfont icon-kuaisuqueren"></i></div></div>
+      <div class="md-layout-item"><div :class='{activeHx:hxindex==1}' class="btnHx" @mouseover='hxindex=1' @mouseleave='showInfo=false;showInfo=true'><i class="test2 iconfont icon-qukuailian"></i></div></div>
+     <div class="md-layout-item"><div  :class='{activeHx:hxindex==2}' class="btnHx" @mouseover='hxindex=2' @mouseleave='showInfo=false;showInfo=true'><i class="test2 iconfont icon-mianfeiICO" ></i></div></div>
+      <div class="md-layout-item"><div  :class='{activeHx:hxindex==3}' class="btnHx" @mouseover='hxindex=3' @mouseleave='showInfo=false;showInfo=true'><i class="test2 iconfont icon-kaifangxing" ></i></div></div>
+       <div class="md-layout-item"><div  :class='{activeHx:hxindex==4}' class="btnHx" @mouseover='hxindex=4' @mouseleave='showInfo=false;showInfo=true'><i class="test2 iconfont icon-toumingkexin"></i></div></div>
+        <div class="md-layout-item"><div  :class='{activeHx:hxindex==5}' class="btnHx" @mouseover='hxindex=5' @mouseleave='showInfo=false;showInfo=true'><i class="test2 iconfont icon-diyongjin" ></i></div></div>
+         <div class="md-layout-item"><div  :class='{activeHx:hxindex==6}' class="btnHx" @mouseover='hxindex=6' @mouseleave='showInfo=false;showInfo=true'><i class="test2 iconfont icon-gaoanquanxing" ></i></div></div>
+           <div class="md-layout-item"><div :class='{activeHx:hxindex==7}'  class="btnHx" @mouseover='hxindex=7' @mouseleave='showInfo=false;showInfo=true'><i class="test2 iconfont icon-kuaisuqueren"></i></div></div>
     </div>
      <md-content class="info">
-     <div>
+      <transition name="slide-fade">
+     <div v-if="showInfo">
         <!-- <img :src="imgs[lanImg].info" class="full"/> -->
         <h1>{{hxs[lanImg]['hx'+hxindex].title}}</h1>
         <hr>
         <p>{{hxs[lanImg]['hx'+hxindex].info}}</p>
      </div>
+     </transition>
   </md-content>
   </md-content>
   <md-content id="page4">
@@ -85,8 +92,10 @@ export default {
       lanImgs: ['en', 'cn', 'jp', 'ko'],
       imgs: imgs,
       hxindex:1,
+      showInfo:true,
       hxs:{
         cn:{
+          hx:'核心技术',
           hx1:{title:'区块链技术',info:'区块链技术，简称BT（Blockchain technology），称之为分布式账本技术，是互联网数据库技术，其特点是去中心化、公开透明，让每个人均可参与数据查询。'},
           hx2:{title:'免费ICO',info:'无需缴纳高昂的上币费用，专业团队对接，ico项目免费上线'},
           hx3:{title:'开放性',info:'交易所，各币种以及美元法币自由对接'},
@@ -221,6 +230,25 @@ export default {
   /* width:5vw; */
   /* height:60%; */
   padding-bottom:10vh;
+ 
+  /* height:4vw; */
+}
+.hx div{
+  display: flex;
+  justify-content: flex-end;
+}
+.hx h1{
+  font-size:6vh;
+  padding:2vh;
+  
+}
+.hx hr{
+  width:4vh;
+  height:1vh;
+  color:white;
+  background-color:white;
+  border:none;
+  margin:1vh auto;
 }
 .info{
   padding:5vh;
@@ -232,21 +260,21 @@ export default {
     line-height:2em;
 }
 .info h1{
-  font-size:3em;
-  padding:1em;
+  font-size:4vh;
+  padding:2vh;
   
 }
 .info hr{
-  width:3em;
-  height:0.5em;
+  width:4vh;
+  height:1vh;
   color:white;
   background-color:white;
   border:none;
-  margin:0 auto;
+  margin:1vh auto;
 }
 .info p{
-  font-size:1.5em;
-  padding:1em;
+  font-size:2vh;
+  padding:2vh;
 }
 #page4 {
   padding-top: 3vh;
@@ -298,5 +326,23 @@ export default {
 }
 .footBar{
   padding:3vh 10vw
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>
