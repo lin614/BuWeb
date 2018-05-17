@@ -36,13 +36,13 @@
      <img :src="imgs[lanImg].hx" style=""/>
     </div>
     <div class="md-layout md-gutter">
-      <div class="md-layout-item"><div class="btnHx" @click='hxindex=1'><i class="test2 iconfont icon-qukuailian"></i></div></div>
-     <div class="md-layout-item"><div class="btnHx" @click='hxindex=2'><i class="test2 iconfont icon-mianfeiICO" ></i></div></div>
-      <div class="md-layout-item"><div class="btnHx" @click='hxindex=3'><i class="test2 iconfont icon-kaifangxing" ></i></div></div>
-       <div class="md-layout-item"><div class="btnHx" @click='hxindex=4'><i class="test2 iconfont icon-toumingkexin"></i></div></div>
-        <div class="md-layout-item"><div class="btnHx" @click='hxindex=5'><i class="test2 iconfont icon-diyongjin" ></i></div></div>
-         <div class="md-layout-item"><div class="btnHx" @click='hxindex=6'><i class="test2 iconfont icon-gaoanquanxing" ></i></div></div>
-           <div class="md-layout-item"><div class="btnHx" @click='hxindex=7'><i class="test2 iconfont icon-kuaisuqueren"></i></div></div>
+      <div class="md-layout-item"><div :class='{activeHx:hxindex==1}' class="btnHx" @mouseover='hxindex=1'><i class="test2 iconfont icon-qukuailian"></i></div></div>
+     <div class="md-layout-item"><div  :class='{activeHx:hxindex==2}' class="btnHx" @mouseover='hxindex=2'><i class="test2 iconfont icon-mianfeiICO" ></i></div></div>
+      <div class="md-layout-item"><div  :class='{activeHx:hxindex==3}' class="btnHx" @mouseover='hxindex=3'><i class="test2 iconfont icon-kaifangxing" ></i></div></div>
+       <div class="md-layout-item"><div  :class='{activeHx:hxindex==4}' class="btnHx" @mouseover='hxindex=4'><i class="test2 iconfont icon-toumingkexin"></i></div></div>
+        <div class="md-layout-item"><div  :class='{activeHx:hxindex==5}' class="btnHx" @mouseover='hxindex=5'><i class="test2 iconfont icon-diyongjin" ></i></div></div>
+         <div class="md-layout-item"><div  :class='{activeHx:hxindex==6}' class="btnHx" @mouseover='hxindex=6'><i class="test2 iconfont icon-gaoanquanxing" ></i></div></div>
+           <div class="md-layout-item"><div :class='{activeHx:hxindex==7}'  class="btnHx" @mouseover='hxindex=7'><i class="test2 iconfont icon-kuaisuqueren"></i></div></div>
     </div>
      <md-content class="info">
      <div>
@@ -148,7 +148,8 @@ export default {
   border:none;
    
 }
-.btnHx:hover{
+/* .btnHx:hover, */
+.activeHx{
   transform: scale(1.5);  
    background: url(../imgs/big.png);
     background-size: 100% 100%;
@@ -162,7 +163,9 @@ export default {
   color:white;
   font-size:3vw
 }
-.btnHx:hover>i{
+/* .btnHx:hover>i, */
+.activeHx>i
+{
    color:#557cff;
 }
 .full{
@@ -208,7 +211,7 @@ export default {
 #page3 {
   padding: 3vh 20%;
   background-color: #557cff;
-  /* height: 50vh; */
+  height: 75vh;
 }
 .hx{
   display: inline-flex;
@@ -232,6 +235,14 @@ export default {
   font-size:3em;
   padding:1em;
   
+}
+.info hr{
+  width:3em;
+  height:0.5em;
+  color:white;
+  background-color:white;
+  border:none;
+  margin:0 auto;
 }
 .info p{
   font-size:1.5em;
