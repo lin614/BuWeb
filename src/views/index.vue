@@ -32,11 +32,19 @@
           <!-- <img :src="imgs[lanImg].email" style="width:50%" /> -->
           <p>{{hxs[lanImg].email}}</p>
         </div>
+        <div style="margin:0 auto;text-align:center">
+          <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScJOjJzzIoF-kXbT1-84S8KgfE7BFetHtF1_zpbkFraCu58zg/viewform?usp=sf_link">
+            <md-button class="md-raised" :style="{background:'#557cff',height:'auto'}">
+
+              <p style="font-size:2em;padding:0.3em">{{hxs[lanImg].apply}}</p>
+            </md-button>
+          </a>
+        </div>
       </div>
     </md-content>
     <md-content id="page2">
-      <!-- <div> <img :src="imgs[lanImg].center" class="full" /></div> -->
-      <div class=" md-layout md-gutter">
+      <div class="pc"> <img :src="imgs[lanImg].center" class="full " /></div>
+      <div class=" md-layout md-gutter mo">
         <div class="md-layout-item md-xsmall-size-100">
           <h1>{{hxs[lanImg]['info'].title1}}</h1>
           <h1 v-if="hxs[lanImg]['info'].title2">{{hxs[lanImg]['info'].title2}}</h1>
@@ -148,7 +156,7 @@
           </a>
         </div>
         <div class="md-layout-item">
-          <a href="#">
+          <a href="https://www.facebook.com/Exchangechain-464596853988595/">
             <div class="btnLx">
               <i class="test2 iconfont icon-facebook"></i>
             </div>
@@ -185,7 +193,7 @@ export default {
   // components:{QrcodeVue},
   data() {
     return {
-      lanImg: 'en',
+      lanImg: 'cn',
       lanImgs: ['en', 'cn', 'jp', 'ko'],
       imgs: imgs,
       qrurl: null,
@@ -194,6 +202,7 @@ export default {
       showMenu: false,
       hxs: {
         cn: {
+          apply: '上币申请',
           info: {
             title1: 'ExchangeChain',
             title2: '是什么',
@@ -210,8 +219,8 @@ export default {
               '区块链技术，简称BT（Blockchain technology），称之为分布式账本技术，是互联网数据库技术，其特点是去中心化、公开透明，让每个人均可参与数据查询。'
           },
           hx2: {
-            title: '免费ICO',
-            info: '无需缴纳高昂的上币费用，专业团队对接，ico项目免费上线'
+            title: '免费上币',
+            info: '无需缴纳高昂的上币费用，专业团队对接'
           },
           hx3: { title: '开放性', info: '交易所，各币种以及美元法币自由对接' },
           hx4: {
@@ -233,6 +242,7 @@ export default {
           }
         },
         en: {
+          apply: 'Apply to list',
           info: {
             title1: 'About',
             title2: 'ExchangeChain',
@@ -248,14 +258,14 @@ export default {
               'B.T. as called as distributed ledger technology, use the Internet Database Technology, is a digitized, decentralized, public ledger, it allows market participants to keep track of all transactions without central recordkeeping.'
           },
           hx2: {
-            title: 'Free ICO',
+            title: 'No listing fee',
             info:
-              'Listing Free No Charge, professional team support, Free Launching ICO projects.'
+              'No need to pay expensive listing fee, professional team support on listin'
           },
           hx3: {
             title: 'Open',
             info:
-              'xchanges support for all tokens, USD and other legal currencies. '
+              'Exchanges support for all tokens, USD and other legal currencies. '
           },
           hx4: {
             title: 'High transparency and credibility',
@@ -273,10 +283,11 @@ export default {
           },
           hx7: {
             title: 'Fast transaction',
-            info: 'adoption of POS, faster confirmed transactions only 1 second'
+            info: 'Adoption of POS, faster confirmed transactions only 1 second'
           }
         },
         jp: {
+          apply: 'Apply to list',
           info: {
             title1: 'ExchangeChain',
             title2: 'とは？',
@@ -321,6 +332,7 @@ export default {
           }
         },
         ko: {
+          apply: 'Apply to list',
           info: {
             title1: '두 째  엑스체인지가 이란?',
 
@@ -367,16 +379,43 @@ export default {
       }
     }
   },
+  watch: {
+    lanImg(v, o) {
+      var list = ['cn', 'en']
+      var i = list.indexOf(v)
+      if (i < 0) return
+      this.showNotice(i + 1)
+    }
+  },
   methods: {
     handleStart(img) {
       this.lanImg = img
+    },
+    showNotice(num) {
+      var t1 = 'Exchain超级合作伙伴计划开启',
+        t2 = 'The Super Partner Project of Exchain',
+        c1 =
+          '<div style="padding:10px">Exchain数字货币交易所即将在7月中下旬正式上线。即日起，Exchain开启“超级合作伙伴”计划。<br/><br/>每一位Exchain交易所的用户只需邀请新用户到交易所进行交易，就可以成为“普通合作伙伴”。普通合作伙伴可获得交易所的平台币奖励，同时还能获得用户分成。<br/><br/>普通合作伙伴成功邀请50个新用户到交易所进行交易，即可成为“超级合作伙伴”，除了享有普通合作伙伴的平台币奖励和用户分成以外，还能获得一定数量的现金回馈。<br/><br/>如有意向成为Exchain的超级合作伙伴，请发送邮件至partner@exchain.com 获取相关信息。</div>',
+        c2 =
+          '<div style="padding:10px">Exchain, a digital asset exchange, is about to be launched in middle July. From now on, Exchain opens the "Super Partner" project.<br/><br/>Everyone can be the “partner” of Exchain as long as the new users he/she invited have exchanged digital asset on Exchain. The partner can get digital asset of Exchain and user’s commission as reward.<br/><br/>The partner can become the “super partner” if he/she successfully invites 50 new users to trade on Exchain. And the super partner can also get digital asset of Exchain and user’s commission as reward. What’s more, he/she can get a fixed number of cash.<br/><br/>If you are interested in becoming the super partner of Exchain, please send email to partner@exchain.com  for more information.</div>'
+      this.$Modal.info({
+        title: eval('t' + num),
+        content: eval('c' + num)
+      })
     }
   },
-  mounted() {}
+  mounted() {
+    this.showNotice(1)
+  }
 }
 </script>
 
 <style>
+/* .md-button.md-raised:not([disabled]) {
+  background-color: #557cff;
+  color: white;
+  font-size: 2em;
+} */
 a:link {
   text-decoration: none !important;
 }
@@ -472,12 +511,12 @@ a:link {
 }
 #page2 p {
   padding: 2vh 3vh 2vh 0;
-  font-size: 1.5em;
-  line-height: 1.5em;
+  font-size: 3vh;
+  line-height: 3vh;
 }
-#page2 img {
+/* #page2 img {
   padding: 5vh 0 0 3vh;
-}
+} */
 #page3 {
   padding: 3vh 20%;
   background-color: #557cff;
@@ -615,7 +654,19 @@ a:link {
 .ivu-poptip-popper {
   min-width: 0 !important;
 }
+.pc {
+  display: block;
+}
+.mo {
+  display: none !important;
+}
 @media screen and(max-width: 600px) {
+  .mo {
+    display: block !important;
+  }
+  .pc {
+    display: none !important;
+  }
   #page1,
   #page2,
   #page3,
